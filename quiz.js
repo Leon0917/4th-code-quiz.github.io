@@ -80,10 +80,10 @@ function renderQuestion(){
 }
 
 
-start.addEventListener("click",startButton);
+start.addEventListener("click",startQuiq);
 
 // start quiz
-function startButton() {
+function startQuiq() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
@@ -98,3 +98,97 @@ function renderProgress(){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
 }
+
+// counter render
+
+function renderCounter(){
+    if(count <= questionTime){
+        counter.innerHTML = count;
+        timeGauge.style.width = count * gaugeUnit + "px";
+        count++
+    }
+    else {
+        count = 0;
+          // change progress color to red
+          answerIsWrong();
+          if(runningQuestion < lastQuestion){
+              runningQuestion++;
+              renderQuestion();
+          }else{
+              // end the quiz and show the score
+              clearInterval(TIMER);
+              scoreRender();
+          }
+    }
+
+    function checkAnswer(answer){
+        if( answer == questions[runningQuestion].correct){
+            // answer is correct
+            score++;
+            // change progress color to green
+            answerIsCorrect();
+        }else{
+            // answer is wrong
+            // change progress color to red
+            answerIsWrong();
+        }
+        count = 0;
+        if(runningQuestion < lastQuestion){
+            runningQuestion++;
+            renderQuestion();
+        }else{
+            // end the quiz and show the score
+            clearInterval(TIMER);
+            scoreRender();
+        }
+    }
+
+//     // answer is correct
+// function answerIsCorrect(){
+//     document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+// }
+
+// // answer is Wrong
+// function answerIsWrong(){
+//     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+// }
+
+// // score render
+// function scoreRender(){
+//     scoreDiv.style.display = "block";
+    
+//     // calculate the amount of question percent answered by the user
+//     const scorePerCent = Math.round(100 * score/questions.length);
+    
+//     // choose the image based on the scorePerCent
+//     let img = (scorePerCent >= 80) ? "img/5.png" :
+//               (scorePerCent >= 60) ? "img/4.png" :
+//               (scorePerCent >= 40) ? "img/3.png" :
+//               (scorePerCent >= 20) ? "img/2.png" :
+//               "img/1.png";
+    
+//     scoreDiv.innerHTML = "<img src="+ img +">";
+//     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
