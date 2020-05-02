@@ -1,16 +1,16 @@
 // select all elements
-const start = document.getElementById("start");
-const quiz = document.getElementById("quiz");
-const question = document.getElementById("question");
-const qImg = document.getElementById("qImg");
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const choiceC = document.getElementById("D");
-const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("scoreContainer");
+var start = document.getElementById("start");
+var quiz = document.getElementById("quiz");
+var question = document.getElementById("question");
+var qImg = document.getElementById("qImg");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
+var counter = document.getElementById("counter");
+var timeGauge = document.getElementById("timeGauge");
+var progress = document.getElementById("progress");
+var scoreDiv = document.getElementById("scoreContainer");
 
 // create our questions
 var questions = [
@@ -20,7 +20,7 @@ var questions = [
       choiceB:"booleans", 
       choiceC:"alerts",
       choiceD:"numbers",
-      answer: "alerts"
+      answer: "C"
     },
     {
       question: "The condition in an if / else statement is enclosed within ____.",
@@ -28,7 +28,7 @@ var questions = [
       choiceB: "curly brackets", 
       choiceC: "parentheses", 
       choiceD:"square brackets",
-      answer: "parentheses"
+      answer: "C"
     },
     {
       question: "Arrays in JavaScript can be used to store ____.", 
@@ -36,7 +36,7 @@ var questions = [
       choiceB:"other arrays",
       choiceC:"booleans",
       choiceD:"all of the above",
-      answer: "all of the above"
+      answer: "D"
     },
     {
       question: "String values must be enclosed within ____ when being assigned to variables.",
@@ -44,7 +44,7 @@ var questions = [
       choiceB:"curly brackets", 
       choiceC:"quotes", 
       choiceD:"parentheses",
-      answer: "quotes"
+      answer: "C"
     },
     {
       question: "A very useful tool used during development and debugging for printing content to the debugger is:",
@@ -52,7 +52,7 @@ var questions = [
       choiceB:"terminal / bash", 
       choiceC:"for loops", 
       choiceD:"console.log",
-      answer: "console.log"
+      answer: "D"
     }
   ];
   
@@ -72,33 +72,31 @@ function renderQuestion(){
     let q = questions[runningQuestion];
     
     question.innerHTML = "<p>"+ q.question +"</p>";
-    // qImg.innerHTML = "<img src="+ q.imgSrc +">";
+    qImg.innerHTML = "<img src="+ q.imgSrc +">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
-    choiceC.innerHTML = q.choiceD;
+    choiceD.innerHTML = q.choiceD;
+    renderProgress();
 }
 
 
-start.addEventListener("click",startQuiq);
+start.addEventListener("click", startQuiz);
 
 // start quiz
-function startQuiq() {
+function startQuiz() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
-    renderProgress();
     renderCounter();
     TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
 // render progress
 function renderProgress(){
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-    }
-}
+        progress.innerHTML = "<div class='prog'>question #"+(runningQuestion+1)+' of '+questions.length+  "</div>";
 
+}
 // counter render
 
 function renderCounter(){
@@ -109,7 +107,6 @@ function renderCounter(){
     }
     else {
         count = 0;
-          // change progress color to red
           answerIsWrong();
           if(runningQuestion < lastQuestion){
               runningQuestion++;
@@ -119,16 +116,18 @@ function renderCounter(){
               clearInterval(TIMER);
               scoreRender();
           }
-    }
+    }}
 
     function checkAnswer(answer){
-        if( answer == questions[runningQuestion].correct){
+        if( answer == questions[runningQuestion].answer){
+            console.log(questions[runningQuestion])
             // answer is correct
             score++;
             // change progress color to green
             answerIsCorrect();
         }else{
             // answer is wrong
+            console.log(questions[runningQuestion])
             // change progress color to red
             answerIsWrong();
         }
@@ -143,38 +142,26 @@ function renderCounter(){
         }
     }
 
-//     // answer is correct
-// function answerIsCorrect(){
-//     document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
-// }
+    // answer is correct
+function answerIsCorrect(){
+    document.getElementById('result').textContent = "correct";
+}
 
-// // answer is Wrong
-// function answerIsWrong(){
-//     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
-// }
+// answer is Wrong
+function answerIsWrong(){
+    document.getElementById('result').textContent = "wrong";
+}
 
-// // score render
-// function scoreRender(){
-//     scoreDiv.style.display = "block";
+// score render
+function scoreRender(){
+    scoreDiv.style.display = "block";
     
-//     // calculate the amount of question percent answered by the user
-//     const scorePerCent = Math.round(100 * score/questions.length);
+    // calculate the amount of question percent answered by the user
+    const scorePerCent = Math.round(100 * score/questions.length);
     
-//     // choose the image based on the scorePerCent
-//     let img = (scorePerCent >= 80) ? "img/5.png" :
-//               (scorePerCent >= 60) ? "img/4.png" :
-//               (scorePerCent >= 40) ? "img/3.png" :
-//               (scorePerCent >= 20) ? "img/2.png" :
-//               "img/1.png";
     
-//     scoreDiv.innerHTML = "<img src="+ img +">";
-//     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
-// }
-
-
-
-
-
+    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+}
 
 
 

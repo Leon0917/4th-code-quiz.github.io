@@ -1,3 +1,15 @@
+
+#container{
+    margin : 30px auto;
+    background-color:gainsboro;
+    height: 300px;
+    width : 700px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px;
+    position: relative;
+    padding-top: 30px;
+}
+
 #start {
     color: rgb(252, 0, 97);
     text-align: center;
@@ -9,9 +21,15 @@
      width:100px;
     height:150px;
     border : 2px solid lightgrey;
+    margin: auto;
+    padding-top: 30px;
+    background-color: gray;
 } 
 
 #start:hover{
     border: 3px solid lightseagreen;
     color : lightseagreen;
+}
+#question{
+    
 }
