@@ -54,18 +54,18 @@
     font-size: 3em;
 }
    
-.initial{
+#initial{
     border: 4px wheat;
     background-color: gray;
     text-align: center;
     font-family: monospace;
     width : 700px;
-    padding : 15px;
+    padding : 15px 10px 15px 10px;
     margin : 30px auto;
     font-size: 1.25em;
-}
-#storebtn{
-    background-color: teal;
+    }
+#savebtn{
+    color: rgb(252, 0, 97);
     padding: 2px;
     cursor: pointer;
 }

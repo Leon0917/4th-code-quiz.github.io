@@ -30,12 +30,14 @@
             </div>
             <div id="scoreContainer" style="display: none"></div>
             </div>
-            <div class="initial">
-                <h2>Last Registered User:</h2>
-                <p><strong>Initials:</strong> <span id="user-initial"></span></p>
-                <p><strong>Saved score:</strong> <span id="user-score"></span></p>
-                <button id="storebtn">Store</button>
-              </div>
+           <form id="initial">
+               <label>Last Registered User:</label><br>
+               <label>initials</label>
+               <input placeholder="Users initials">
+               <label>Score</label>
+                <input placeholder="Saved score">
+                <button id="savebtn">save</button>
+           </form>
         </div>
         
         <script src="./quiz.js" async defer></script>
