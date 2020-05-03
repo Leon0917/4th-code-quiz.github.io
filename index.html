@@ -14,7 +14,6 @@
             <div id="start">Start button!</div>
             <div id="quiz" style="display: none">
                 <div id="question"></div>
-                <div id="qImg"></div>
                 <div id="choices">
                     <div class="choice" id="A" onclick="checkAnswer('A')"></div>
                     <div class="choice" id="B" onclick="checkAnswer('B')"></div>
@@ -31,6 +30,12 @@
             </div>
             <div id="scoreContainer" style="display: none"></div>
             </div>
+            <div class="initial">
+                <h2>Last Registered User:</h2>
+                <p><strong>Initials:</strong> <span id="user-initial"></span></p>
+                <p><strong>Saved score:</strong> <span id="user-score"></span></p>
+                <button id="storebtn">Store</button>
+              </div>
         </div>
         
         <script src="./quiz.js" async defer></script>

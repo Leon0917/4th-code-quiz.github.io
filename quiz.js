@@ -2,7 +2,6 @@
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
-var qImg = document.getElementById("qImg");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
@@ -50,8 +49,8 @@ var questions = [
       question: "A very useful tool used during development and debugging for printing content to the debugger is:",
       choiceA:"JavaScript", 
       choiceB:"terminal / bash", 
-      choiceC:"for loops", 
-      choiceD:"console.log",
+      choiceC:"for loop",
+      choiceD:"console.log",  
       answer: "D"
     }
   ];
@@ -72,7 +71,6 @@ function renderQuestion(){
     let q = questions[runningQuestion];
     
     question.innerHTML = "<p>"+ q.question +"</p>";
-    qImg.innerHTML = "<img src="+ q.imgSrc +">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
