@@ -10,6 +10,7 @@ var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var progress = document.getElementById("progress");
 var scoreDiv = document.getElementById("scoreContainer");
+var initial = document.getElementById("initial");
 
 // create our questions
 var questions = [
@@ -156,10 +157,27 @@ function scoreRender(){
     
     // calculate the amount of question percent answered by the user
     const scorePerCent = Math.round(100 * score/questions.length);
-    
-    
-    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+    // document.getElementById("scorePercent").disabled = true;   
+    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";  
 }
+
+function writeScore() {
+    var userInitial = document.getElementById("initial1").value 
+    const scorePercent = Math.round(100 * score/questions.length)
+    var previousUser = localStorage.getItem("userInitials")||        "welcome user"  
+    var highScore = localStorage.getItem("highScore")||0
+    if (score > highScore) {
+        localStorage.setItem("userInitials", userInitial)
+        localStorage.setItem("highScore", highScore)
+        
+    } 
+}
+var previousUser = localStorage.getItem("userInitials")||"welcome user"  
+var highScore = localStorage.getItem("highScore")||0
+
+var localStorageDisplay = document.getElementById("store3")
+    localStorageDisplay.innerText = "previous high score:"+ highScore+ "user:" + previousUser
+
 
 
 

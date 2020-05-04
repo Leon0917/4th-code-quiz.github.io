@@ -15,10 +15,12 @@
             <div id="quiz" style="display: none">
                 <div id="question"></div>
                 <div id="choices">
-                    <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-                    <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-                    <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-                    <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+                    <ul>
+                      <li class="choice" id="A" onclick="checkAnswer('A')"></li>
+                      <li class="choice" id="B" onclick="checkAnswer('B')"></li>
+                      <li class="choice" id="C" onclick="checkAnswer('C')"></li>
+                      <li class="choice" id="D" onclick="checkAnswer('D')"></li>
+                    </ul>
                 </div>
                 <div id="timer">
                     <div id="counter"></div>
@@ -32,14 +34,10 @@
             </div>
            <form id="initial">
                <label>Last Registered User:</label><br>
-               <label>initials</label>
-               <input placeholder="Users initials">
-               <label>Score</label>
-                <input placeholder="Saved score">
-                <button id="savebtn">save</button>
-           </form>
-        </div>
-        
+               <label id="store3">initials</label>
+                    <input id="initial1" placeholder="Users initials">
+                <button onclick="writeScore()" id="savebtn">save</button>
+           </form>        
         <script src="./quiz.js" async defer></script>
     </body>
 </html>
