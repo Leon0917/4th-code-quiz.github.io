@@ -11,6 +11,7 @@ var timeGauge = document.getElementById("timeGauge");
 var progress = document.getElementById("progress");
 var scoreDiv = document.getElementById("scoreContainer");
 var initial = document.getElementById("initial");
+var gameOver = false;
 
 // create our questions
 var questions = [
@@ -118,6 +119,9 @@ function renderCounter(){
     }}
 
     function checkAnswer(answer){
+        if (gameOver === true){
+            return
+        }
         if( answer == questions[runningQuestion].answer){
             console.log(questions[runningQuestion])
             // answer is correct
@@ -138,6 +142,7 @@ function renderCounter(){
             // end the quiz and show the score
             clearInterval(TIMER);
             scoreRender();
+            gameOver = true;
         }
     }
 
@@ -156,16 +161,15 @@ function scoreRender(){
     scoreDiv.style.display = "block";
     
     // calculate the amount of question percent answered by the user
-    const scorePerCent = Math.round(100 * score/questions.length);
-    // document.getElementById("scorePercent").disabled = true;   
+    var scorePerCent = Math.round(100 * score/questions.length);     
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";  
 }
 
 function writeScore() {
     var userInitial = document.getElementById("initial1").value 
     const scorePercent = Math.round(100 * score/questions.length)
-    var previousUser = localStorage.getItem("userInitials")||        "welcome user"  
-    var highScore = localStorage.getItem("highScore")||0
+    var previousUser = localStorage.getItem("userInitials")||     "welcome user"  
+    var highScore = localStorage.getItem("highScore")|| 0
     if (score > highScore) {
         localStorage.setItem("userInitials", userInitial)
         localStorage.setItem("highScore", highScore)
