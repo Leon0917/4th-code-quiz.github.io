@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 
-<html class="no-js"> 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Code quiz</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    <body>
-        <div id="container">
-            <div id="start">Start button!</div>
-            <div id="quiz" style="display: none">
-                <div id="question"></div>
-                <div id="choices">
-                    <ul>
-                      <li class="choice" id="A" onclick="checkAnswer('A')"></li>
-                      <li class="choice" id="B" onclick="checkAnswer('B')"></li>
-                      <li class="choice" id="C" onclick="checkAnswer('C')"></li>
-                      <li class="choice" id="D" onclick="checkAnswer('D')"></li>
-                    </ul>
-                </div>
-                <div id="timer">
-                    <div id="counter"></div>
-                    <div id="btimeGauge"></div>
-                    <div id="timeGauge"></div>
-                    <div id="result"></div>
-                </div>
-                <div id="progress"></div>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Code quiz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="start">Start button!</div>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>
+            <div id="choices">
+                <ul>
+                    <li class="choice" id="A" onclick="checkAnswer('A')"></li>
+                    <li class="choice" id="B" onclick="checkAnswer('B')"></li>
+                    <li class="choice" id="C" onclick="checkAnswer('C')"></li>
+                    <li class="choice" id="D" onclick="checkAnswer('D')"></li>
+                </ul>
             </div>
-            <div id="scoreContainer" style="display: none"></div>
+            <div id="timer">
+                <div id="counter"></div>
+                <div id="btimeGauge"></div>
+                <div id="timeGauge"></div>
+                <div id="result"></div>
             </div>
-           <form id="initial">
-               <label>Last Registered User:</label><br>
-               <label id="store3">initials</label>
-                    <input id="initial1" placeholder="Users initials">
-                <button onclick="writeScore()" id="savebtn">save</button>
-           </form>        
-        <script src="./quiz.js" async defer></script>
-    </body>
+            <div id="progress"></div>
+        </div>
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+    <form id="initial">
+        <label>Last Registered User:</label><br>
+        <label id="store3">initials</label>
+        <input id="initial1" placeholder="Users initials">
+        <button onclick="writeScore()" id="savebtn">save</button>
+    </form>
+    <script src="./quiz.js" async defer></script>
+</body>
+
 </html>
