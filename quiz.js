@@ -101,7 +101,6 @@ function renderProgress() {
 
 function renderCounter() {
     counter.innerHTML = count;
-    // timeGauge.style.width = count * gaugeUnit + "px";
     count--
 
     if (count <= 0) {
@@ -118,7 +117,6 @@ function checkAnswer(answer) {
     }
     if (answer == questions[runningQuestion].answer) {
         console.log(questions[runningQuestion])
-        // answer is correct
         score++;
         answerIsCorrect();
     } else {
@@ -165,7 +163,7 @@ function writeScore() {
     var highScore = localStorage.getItem("highScore") || 0
     if (score > highScore) {
         localStorage.setItem("userInitials", userInitial)
-        localStorage.setItem("highScore", highScore)
+        localStorage.setItem("highScore", score)
 
     }
 }
@@ -173,7 +171,7 @@ var previousUser = localStorage.getItem("userInitials") || "welcome user"
 var highScore = localStorage.getItem("highScore") || 0
 
 var localStorageDisplay = document.getElementById("store3")
-localStorageDisplay.innerText = "previous high score:" + highScore + "user:" + previousUser
+localStorageDisplay.innerHTML =  "<h5> User:" + previousUser + "</h5><h6>Previous high score:" + highScore +"</h6>"
 
 
 
