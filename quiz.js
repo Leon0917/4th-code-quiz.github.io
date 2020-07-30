@@ -21,15 +21,16 @@ var questions = [
         choiceB: "booleans",
         choiceC: "alerts",
         choiceD: "numbers",
-        answer: "C"
+        answer: "C",
     },
     {
-        question: "The condition in an if / else statement is enclosed within ____.",
+        question:
+            "The condition in an if / else statement is enclosed within ____.",
         choiceA: "quotes",
         choiceB: "curly brackets",
         choiceC: "parentheses",
         choiceD: "square brackets",
-        answer: "C"
+        answer: "C",
     },
     {
         question: "Arrays in JavaScript can be used to store ____.",
@@ -37,24 +38,26 @@ var questions = [
         choiceB: "other arrays",
         choiceC: "booleans",
         choiceD: "all of the above",
-        answer: "D"
+        answer: "D",
     },
     {
-        question: "String values must be enclosed within ____ when being assigned to variables.",
+        question:
+            "String values must be enclosed within ____ when being assigned to variables.",
         choiceA: "commas",
         choiceB: "curly brackets",
         choiceC: "quotes",
         choiceD: "parentheses",
-        answer: "C"
+        answer: "C",
     },
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        question:
+            "A very useful tool used during development and debugging for printing content to the debugger is:",
         choiceA: "JavaScript",
         choiceB: "terminal / bash",
         choiceC: "for loop",
         choiceD: "console.log",
-        answer: "D"
-    }
+        answer: "D",
+    },
 ];
 
 // create some variables
@@ -62,9 +65,7 @@ var questions = [
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 50;
-// const questionTime = 10;
 const gaugeWidth = 150;
-// const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 let score = 0;
 
@@ -80,7 +81,6 @@ function renderQuestion() {
     renderProgress();
 }
 
-
 start.addEventListener("click", startQuiz);
 
 // start quiz
@@ -94,38 +94,42 @@ function startQuiz() {
 
 // render progress
 function renderProgress() {
-    progress.innerHTML = "<div class='prog'>question #" + (runningQuestion + 1) + ' of ' + questions.length + "</div>";
-
+    progress.innerHTML =
+        "<div class='prog'>question #" +
+        (runningQuestion + 1) +
+        " of " +
+        questions.length +
+        "</div>";
 }
 // counter render
 
 function renderCounter() {
     counter.innerHTML = count;
-    count--
+    count--;
 
     if (count <= 0) {
-
         // end the quiz and show the score
         clearInterval(TIMER);
         scoreRender();
+        gameOver = true;
     }
 }
 
 function checkAnswer(answer) {
     if (gameOver === true) {
-        return
+        return;
     }
     if (answer == questions[runningQuestion].answer) {
-        console.log(questions[runningQuestion])
+        console.log(questions[runningQuestion]);
         score++;
         answerIsCorrect();
     } else {
         // answer is wrong
-        console.log(questions[runningQuestion])
-        count -= 5;  
+        console.log(questions[runningQuestion]);
+        count -= 5;
         answerIsWrong();
     }
-    
+
     if (runningQuestion < lastQuestion) {
         runningQuestion++;
         renderQuestion();
@@ -139,12 +143,12 @@ function checkAnswer(answer) {
 
 // answer is correct
 function answerIsCorrect() {
-    document.getElementById('result').textContent = "correct";
+    document.getElementById("result").textContent = "correct";
 }
 
 // answer is Wrong
 function answerIsWrong() {
-    document.getElementById('result').textContent = "wrong";
+    document.getElementById("result").textContent = "wrong";
 }
 
 // score render
@@ -152,41 +156,28 @@ function scoreRender() {
     scoreDiv.style.display = "block";
 
     // calculate the amount of question percent answered by the user
-    var scorePerCent = Math.round(100 * score / questions.length);
+    var scorePerCent = Math.round((100 * score) / questions.length);
     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
 }
 
 function writeScore() {
-    var userInitial = document.getElementById("initial1").value
-    const scorePercent = Math.round(100 * score / questions.length)
-    var previousUser = localStorage.getItem("userInitials") || "welcome user"
-    var highScore = localStorage.getItem("highScore") || 0
+    var userInitial = document.getElementById("initial1").value;
+    const scorePercent = Math.round((100 * score) / questions.length);
+    var previousUser = localStorage.getItem("userInitials") || "welcome user";
+    var highScore = localStorage.getItem("highScore") || 0;
     if (score > highScore) {
-        localStorage.setItem("userInitials", userInitial)
-        localStorage.setItem("highScore", score)
-
+        localStorage.setItem("userInitials", userInitial);
+        localStorage.setItem("highScore", score);
     }
 }
-var previousUser = localStorage.getItem("userInitials") || "welcome user"
-var highScore = localStorage.getItem("highScore") || 0
+var previousUser = localStorage.getItem("userInitials") || "welcome user";
+var highScore = localStorage.getItem("highScore") || 0;
 
-var localStorageDisplay = document.getElementById("store3")
-localStorageDisplay.innerHTML =  "<h5> User:" + previousUser + "</h5><h6>Previous high score:" + highScore +"</h6>"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var localStorageDisplay = document.getElementById("store3");
+localStorageDisplay.innerHTML =
+    "<h5> User:" +
+    previousUser +
+    "</h5><h6>Previous high score:" +
+    highScore +
+    "</h6>";
 
